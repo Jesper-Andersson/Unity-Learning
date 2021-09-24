@@ -8,14 +8,10 @@ using TMPro;
     - ESC menu (Options, Exit)
 */
 public class UIController : MonoBehaviour {
-    [SerializeField]
-    TMP_Text scoreText, hpText, staminaText;
-    [SerializeField]
-    FirstPersonController player;
-    [SerializeField]
-    GameObject deathScreen;
-    [SerializeField]
-    GameObject hud;
+    [SerializeField] TMP_Text scoreText, hpText, staminaText, ammoText;
+    [SerializeField] FirstPersonController player;
+    [SerializeField] GameObject deathScreen;
+    [SerializeField] GameObject hud;
     public int score = 0;
     void Start() {
         DisplayScore();
@@ -40,5 +36,12 @@ public class UIController : MonoBehaviour {
     public void DeathScreen() {
         hud.SetActive(false);
         deathScreen.SetActive(true);
+    }
+    void DisplayAmmo(int mag, int total) {
+        ammoText.text = mag + " / " + total;
+    }
+
+    public void UpdateAmmo(int magAmmo, int totalAmmo) {
+        //DisplayAmmo(magAmmo, totalAmmo);
     }
 }
